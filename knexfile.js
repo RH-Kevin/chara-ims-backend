@@ -15,10 +15,10 @@ module.exports = {
       host: process.env.DB_HOST
     },
     migrations: {
-      directory: "./db/data/migrations"
+      directory: "./server/db/data/migrations"
     },
     seeds: {
-      directory: "./db/data/seeds",
+      directory: "./server/db/data/seeds",
     },
   },
 
@@ -46,10 +46,10 @@ module.exports = {
       max: 10
     },
     migrations: {
-      directory: './db/data/migrations'
+      directory: './server/db/data/migrations'
     },
     seeds: {
-      directory: './db/data/seeds'
+      directory: './server/db/data/seeds'
     },
   }
 
