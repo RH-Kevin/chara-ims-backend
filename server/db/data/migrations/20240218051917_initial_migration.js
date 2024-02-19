@@ -5,7 +5,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable("devices", function (table) {
         table.increments("id").primary(); // Primary Key
-        table.string("serial_number", 32);
+        table.string("serial_number", 32).unique();
         table
           .string("email", 32)
           .unique() // This is a constraint that prevents duplicate emails in the table
