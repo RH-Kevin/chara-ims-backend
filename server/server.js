@@ -34,3 +34,4 @@ app.listen(PORT, () => {
 
 // Routes
 app.get("/devices", deviceController.inventory);
+app.post("/devices", deviceController.addDevice);
