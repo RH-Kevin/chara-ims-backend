@@ -25,7 +25,9 @@ module.exports = {
             await deviceModel.addNewDevice(payload);
             res.status(200).send("Record Added Successfully");
         } catch (error) {
+            res.status(400).send("Error");
             console.error(error);
         }
-    }
+    },
+
 }
