@@ -30,4 +30,38 @@ module.exports = {
         }
     },
 
+    async editDeviceNote(req, res) {
+        const { serialNumber, note } = req.body;
+
+        try {
+            const payload = {
+                serial_number: serialNumber,
+                notes: note
+            }
+
+            await deviceModel.editNotes(payload);
+            res.status(200).send("Record Note Updated Successfully");
+        } catch (error) {
+            res.status(400).send("Error");
+            console.error(error);
+        }
+    },
+
+    async editDeviceServiceRecord(req, res) {
+        const { serialNumber, serviceRecord } = req.body;
+
+        try {
+            const payload = {
+                serial_number: serialNumber,
+                service_record: serviceRecord
+            }
+
+            await deviceModel.editServiceRecords(payload);
+            res.status(200).send("Record Service Record Updated Successfully");
+        } catch (error) {
+            res.status(400).send("Error");
+            console.error(error);
+        }
+    }
+
 }
