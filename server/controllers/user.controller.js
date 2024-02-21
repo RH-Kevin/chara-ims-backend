@@ -56,10 +56,8 @@ module.exports = {
             }
             const match = await bcrypt.compare(password, user.hashed_password);
             if (match) {
-                const token = jsonWebToken.generateToken();
-                
-                
-                res.status(200).send(user);
+                const token = jsonWebToken.generateToken(user);
+                res.status(200).json({ token });
             } else {
                 // Password does not match
                 res.status(401).send('Authentication failed');
