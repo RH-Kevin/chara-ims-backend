@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const knex = require("./knex");
 
+
 const PORT = process.env.PORT || 3050;
 
 
@@ -21,6 +22,7 @@ app.use(cors());
 
 // Controllers
 const deviceController = require("./controllers/device.controller");
+const userController = require("./controllers/user.controller");
 
 
 
@@ -32,5 +34,12 @@ app.listen(PORT, () => {
 
 
 
-// Routes
+// Device Routes
 app.get("/devices", deviceController.inventory);
+app.post("/devices", deviceController.addDevice);
+app.post("/signup", userController.signUp);
+app.post("/login", userController.login);
+//app.delete("/devices", deviceController.deleteDevice);
+
+
+// User Routes

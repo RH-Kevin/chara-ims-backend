@@ -8,15 +8,18 @@ exports.up = function(knex) {
         table.string("serial_number", 32).unique();
         table
           .string("email", 32)
-          .unique() // This is a constraint that prevents duplicate emails in the table
           .notNullable()
           .index(); // Adding an index makes searching by email faster
         table.string("first_name", 32);
         table.string("last_name", 32).notNullable();
         table.date("date_assigned");
+        table.string("manufacturer");
+        table.string("model");
         table.date("warranty_end");
         table.string("status");
         table.string("location");
+        table.string("service_record", 1000);
+        table.string("notes", 1000);
       });
 };
 
