@@ -12,5 +12,17 @@ module.exports = {
 
     addNewDevice(device) {
         return knex(DEVICE_TABLE).insert(device);
+    },
+
+    editNotes(note) {
+        return knex(DEVICE_TABLE)
+        .where('serial_number', note.serial_number)
+        .update('notes', note.notes);
+    },
+
+    editServiceRecords(note) {
+        return knex(DEVICE_TABLE)
+        .where('serial_number', note.serial_number)
+        .update('service_record', note.service_record);
     }
 }
