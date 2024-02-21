@@ -1,6 +1,9 @@
 const userModel = require("../models/user.model");
 const bcrypt = require('bcrypt');
 
+// JWT
+const jsonWebToken = require("./util/jwtgen");
+
 
 module.exports = {
     // Displays list of users
@@ -53,8 +56,9 @@ module.exports = {
             }
             const match = await bcrypt.compare(password, user.hashed_password);
             if (match) {
-                // User authenticated successfully
-                // Proceed with login (e.g., generate token, set session)
+                const token = jsonWebToken.generateToken();
+                
+                
                 res.status(200).send(user);
             } else {
                 // Password does not match
