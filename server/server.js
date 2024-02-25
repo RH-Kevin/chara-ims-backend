@@ -36,7 +36,8 @@ app.listen(PORT, () => {
 
 // Device Routes
 app.get("/devices", deviceController.inventory);
-app.post("/devices", deviceController.addDevice);
+app.get("/devices/:serial", deviceController.viewDevice);
+app.post("/devices/adddevice", deviceController.addDevice);
 app.put("/device/notes", deviceController.editDeviceNote);
 app.put("/device/servicerecord", deviceController.editDeviceServiceRecord);
 //app.delete("/devices", deviceController.deleteDevice);
@@ -45,3 +46,5 @@ app.put("/device/servicerecord", deviceController.editDeviceServiceRecord);
 // User Routes
 app.post("/signup", userController.signUp);
 app.post("/login", userController.login);
+app.get("/users", userController.users);
+app.put("/swaprole", userController.swapRole);

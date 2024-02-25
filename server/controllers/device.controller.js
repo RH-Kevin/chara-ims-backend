@@ -1,3 +1,4 @@
+const { log } = require("console");
 const deviceModel = require("../models/device.model")
 
 
@@ -7,6 +8,24 @@ module.exports = {
             const deviceList = await deviceModel.getAll();
             res.json(deviceList);
         } catch (error) {
+            console.error(error);
+        }
+    },
+
+    async viewDevice(req, res) {
+        const serialNumber = req.params.serial;
+        try {
+            const payload = {
+                serial_number: serialNumber,
+            }
+            const result = await deviceModel.getDevice(payload);
+            if (result.length == 0) {
+                res.status(404).send("No results");
+            } else {
+                res.status(200).send(result);
+            }
+        } catch (error) {
+            res.status(400).send("Error");
             console.error(error);
         }
     },

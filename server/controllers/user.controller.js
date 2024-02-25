@@ -4,11 +4,9 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
     // Displays list of users
-    async index(req, res) {
+    async users(req, res) {
         const users = await userModel.getAllUsers();
-        //res.render("" , { users });
-        console.log(users);
-        res.status(200).send(users);
+        res.json(users);
     },
 
     // Adds a new user
@@ -60,6 +58,22 @@ module.exports = {
                 // Password does not match
                 res.status(401).send('Authentication failed');
             }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal server error');
+        }
+    },
+
+    // Changes user privilages
+    async swapRole(req,res) {
+        const { user_name, isAdmin } = req.body;
+        try {
+            if (!user) {
+                return res.status(404).send('User not found');
+            }
+            const users = await userModel.changeAccess();
+            res.status(200).send("Access updated.");
+
         } catch (error) {
             console.error(error);
             res.status(500).send('Internal server error');

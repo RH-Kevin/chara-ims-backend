@@ -1,3 +1,4 @@
+const { log } = require("console");
 const knex = require("../knex");
 //const { validProps, requiredProps } = require("../util/validation");
 
@@ -8,6 +9,10 @@ module.exports = {
 
     getAll(limit = 5) {
         return knex(DEVICE_TABLE).select('*');
+    },
+
+    getDevice(device) {
+        return knex(DEVICE_TABLE).select('*').where('serial_number', device.serial_number);
     },
 
     addNewDevice(device) {

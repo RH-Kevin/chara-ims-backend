@@ -21,5 +21,9 @@ module.exports = {
 
     getUser(user_name) {
         return knex.select('*').from(USERS_TABLE).where('user_name', user_name).first();
-    }
+    },
+
+    // changeAccess(user) {
+    //     return knex.select('user_name', user_name).from(USERS_TABLE).then
+    // }
 }
