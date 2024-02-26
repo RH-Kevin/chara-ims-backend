@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server/server.js",
-    "nodemon": "nodemon ./server/server.js"
+    "nodemon": "nodemon ./server/server.js",
+    "migrate-latest": "npx knex migrate:latest --knexfile ./knexfile.js",
+    "migrate-down": "npx knex migrate:down --knexfile ./knexfile.js",
+    "seed-data": "npx knex seed:run --knexfile .knexfile.js",
+    "build": "npm install && npx knex migrate:latest --knexfile ./knexfile.js && npx knex seed:run --knexfile ./knexfile.js"
   },
   "keywords": [],
   "author": "Kevin Haith",

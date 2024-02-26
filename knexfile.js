@@ -15,10 +15,10 @@ module.exports = {
       host: process.env.DB_HOST
     },
     migrations: {
-      directory: "./db/data/migrations"
+      directory: "./server/db/data/migrations"
     },
     seeds: {
-      directory: "./db/data/seeds",
+      directory: "./server/db/data/seeds",
     },
   },
 
@@ -38,20 +38,19 @@ module.exports = {
   //   }
   // },
 
-  // production: {
-  //   client: 'postgresql',
-  //   connection: {
-  //     database: 'my_db',
-  //     user:     'username',
-  //     password: 'password'
-  //   },
-  //   pool: {
-  //     min: 2,
-  //     max: 10
-  //   },
-  //   migrations: {
-  //     tableName: 'knex_migrations'
-  //   }
-  // }
+  production: {
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      directory: './server/db/data/migrations'
+    },
+    seeds: {
+      directory: './server/db/data/seeds'
+    },
+  }
 
 };
