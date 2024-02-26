@@ -31,14 +31,18 @@ module.exports = {
     },
 
     async addDevice(req, res) {
-        const { serialNumber, firstName, lastName, email } = req.body;
+        const { serialNumber, manufacturer, model, warranty, status, location, purchaseDate, notes  } = req.body;
 
         try {
             const payload = {
                 serial_number: serialNumber,
-                first_name: firstName,
-                last_name: lastName,
-                email: email
+                manufacturer: manufacturer,
+                model: model,
+                warranty_end: warranty,
+                status: status,
+                location: location,
+                purchase_date: purchaseDate,
+                notes: notes,
             }
 
             await deviceModel.addNewDevice(payload);

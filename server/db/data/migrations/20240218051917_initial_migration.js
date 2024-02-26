@@ -8,11 +8,11 @@ exports.up = function(knex) {
         table.string("serial_number", 32).unique();
         table
           .string("email", 32)
-          .notNullable()
           .index(); // Adding an index makes searching by email faster
         table.string("first_name", 32);
-        table.string("last_name", 32).notNullable();
+        table.string("last_name", 32)
         table.date("date_assigned");
+        table.date("purchase_date");
         table.string("manufacturer");
         table.string("model");
         table.date("warranty_end");

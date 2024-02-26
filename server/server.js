@@ -18,21 +18,14 @@ app.use(cors());
 //app.options();
 
 
-
-
 // Controllers
 const deviceController = require("./controllers/device.controller");
 const userController = require("./controllers/user.controller");
-
-
-
 
 // Server
 app.listen(PORT, () => {
     console.log(`Server is listening on port: ${PORT}`);
 });
-
-
 
 // Device Routes
 app.get("/devices", deviceController.inventory);
